@@ -1,0 +1,52 @@
+﻿@model ExpenseTracker.Models.Transaction
+
+@{
+    ViewData["PageTitle"] = Model.TransactionId == 0 ? "create a new transaction" : "Edit Transaction";
+}
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="widget p-5">
+            <form asp-action="AddOrEdit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="TransactionId" value="@Model.TransactionId"/>
+                <div class="mb-3">
+                    <ejs-datepicker id="datepicker" floatLabelType="Always" placeholder="Date" ejs-for="Date" format="dd-MMM-yyyy"></ejs-datepicker>
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-dropdownlist id="ddlcategory" ejs-for="CategoryId" dataSource="@ViewBag.Categories" placeholder="Category" floatLabelType="Always" ignoreAccent="true" filterType="Contains">
+                    <e-dropdownlist-fields value="CategoryId" text="TitleWithIcon"></e-dropdownlist-fields>
+                    </ejs-dropdownlist>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-numerictextbox id="amount" placeholder="Amount" ejs-for="@Model.Amount" floatLabelType="Always" min="0" format="C0"></ejs-numerictextbox>
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="note" Placeholder="Note" ejs-for="@Model.Note" floatLabelType="Always" multiline="true"></ejs-textbox>
+                    <span asp-validation-for="Note" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-money-bill-transfer fa-2xl"></i>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

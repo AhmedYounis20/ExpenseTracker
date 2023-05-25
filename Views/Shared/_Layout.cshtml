@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ExpenseTracker</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @*<link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/21.1.35/material.css" />*@
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/21.1.35/bootstrap5-dark.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ExpenseTracker.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.syncfusion.com/ej2/21.1.35/dist/ej2.min.js"></script>
 </head>
-<body>
+<body class="e-bigger">
+    <partial name="_SideBar" />
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -20,30 +25,66 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Dashboard" asp-action="Index">dashboard</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index">Category</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Transaction" asp-action="Index">Transaction</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <div class="main-content">
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - ExpenseTracker - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="@(ViewData["isDashboard"] == null ? "col-md-10":"col-md-12")">
+                    <main role="main" class="pb-3">
+                        @if (ViewData["isDashboard"] == null)
+                        {
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="d-flex flex-column mb-5">
+                                        <div class="d-flex mb-1">
+                                            <div class="flex-grow-1">
+                                                <h3 class="fw-bold"> @ViewData["PageTitle"]</h3>
+                                            </div>
+                                            <div>
+                                                @if (ViewData["PageActionText"] != null)
+                                                {
+
+                                                    <a class="btn btn-success" href="@ViewData["PageActionurl"]">@ViewData["PageActionText"]</a>
+                                                }
+                                            </div>
+                                        </div>
+                                        <ejs-breadcrumb id="breadcrumb" separatorTemplate="@Html.Raw("<span class='fa-solid fa-angle-right'></span>")"></ejs-breadcrumb>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        @RenderBody()
+                    </main>
+                </div>
+            </div>
         </div>
-    </footer>
+    </div>
+    @*
+    <footer class="border-top footer text-muted">
+    <div class="container">
+    &copy; 2023 - ExpenseTracker - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+    </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <ejs-scripts></ejs-scripts>
+
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>
