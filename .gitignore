@@ -1,0 +1,53 @@
+# ASP.NET MVC
+
+# Visual Studio files
+.vs/
+*_iis.xml
+*.pidb
+*.user
+*.suo
+*.cache
+*.dll
+*.pdb
+*.ipch/
+obj/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+msbuild.log
+msbuild.err
+
+# NuGet Packages
+*.nupkg
+packages/
+
+# ReSharper
+_ReSharper*/
+*.resharper*
+*.[Rr]e[Ss]harper
+
+# Test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Visual Studio Code
+.vscode/
+
+# User-specific files
+*.sln.docstates
+*.suo
+*.user
+*.userosscache
+*.sln.ide
+
+# Build results
+bin/
+obj/
