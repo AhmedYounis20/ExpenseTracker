@@ -49,21 +49,29 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.3, )"
+              "version": "[8.0.0-preview.4.23259.3, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.3, )"
+              "version": "[8.0.0-preview.4.23259.3, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
+            "Syncfusion.EJ2.AspNet.Core": {
+              "target": "Package",
+              "version": "[21.2.6, )"
             },
             "microsoft.entityframeworkcore": {
               "target": "Package",
-              "version": "[6.0.3, )"
+              "version": "[8.0.0-preview.4.23259.3, )"
             },
             "microsoft.entityframeworkcore.sqlserver": {
               "target": "Package",
-              "version": "[6.0.3, )"
+              "version": "[8.0.0-preview.4.23259.3, )"
             }
           },
           "imports": [
